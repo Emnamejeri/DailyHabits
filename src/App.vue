@@ -1,15 +1,13 @@
 <template>
-  <router-view />
   <navigationComponent />
   <bodyText />
-  <adviceDisplay />
+  <router-view />
   <footerSection />
 </template>
 
 <script>
 import navigationComponent from "./components/navigationComponent.vue";
 import bodyText from "./components/bodyText.vue";
-import adviceDisplay from "./components/adviceDisplay.vue";
 import footerSection from "./components/footerSection.vue";
 
 export default {
@@ -18,7 +16,6 @@ export default {
     navigationComponent,
     bodyText,
     footerSection,
-    adviceDisplay,
   },
 };
 </script>
