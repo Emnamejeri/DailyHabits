@@ -1,7 +1,5 @@
 <template>
   <header>
-    <h2>Habits Tracker</h2>
-    <br />
     <h3>
       Your Way to a New life Mastery <br />
       <br />
@@ -38,53 +36,50 @@ body {
 header {
   color: #2c3e50;
   text-align: center;
-  padding: 2em 1em; /* Adjusted padding for smaller screens */
-}
-
-header h2 {
-  margin: 0;
-  font-size: 2.5em;
+  padding: 2em 1em;
 }
 
 header h3 {
-  margin-top: 1em; /* Adjusted margin for smaller screens */
+  margin-top: 1em;
   font-weight: normal;
 }
 .router-link {
-  display: block; /* make the links block elements so they take the full width available */
-  width: 70%; /* set width to 70% of the container's width */
-  text-align: center; /* center the text within the button */
-  padding: 15px 0; /* increase the vertical padding to make the button larger */
-  /* center the buttons horizontally and add space between them */
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
 }
-
-/* If you have other .btn classes, adjust padding as required */
 .btn {
   padding: 10px 15px;
-  font-size: 16px; /* Adjust font size if necessary */
-  text-decoration: none; /* remove the default underline of links */
+  font-size: 26px;
+  text-decoration: none;
+  width: 30%;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
 }
 
 .steps-container {
   display: flex;
-  flex-wrap: wrap; /* Added wrap for smaller screens */
+  flex-wrap: wrap;
   justify-content: space-between;
-  padding: 2em 1em; /* Adjusted padding for smaller screens */
+  padding: 2em 1em;
   max-width: 800px;
-  margin: 2em auto; /* Adjusted margin for smaller screens */
+  margin: 2em auto;
   background-color: #ecf0f1;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .step {
-  flex: 1 1 250px; /* Updated flex properties to allow wrapping on smaller screens */
+  flex: 1 1 250px;
   display: flex;
   align-items: center;
-  padding: 1em; /* Adjusted padding for smaller screens */
+  padding: 1em;
   border-right: 1px solid #bdc3c7;
   position: relative;
-  margin-bottom: 1em; /* Added margin-bottom for smaller screens */
+  margin-bottom: 1em;
 }
 
 .step:last-child {
@@ -100,7 +95,7 @@ header h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 1em; /* Adjusted margin for smaller screens */
+  margin-right: 1em;
   font-weight: bold;
 }
 
@@ -109,7 +104,6 @@ header h3 {
   flex: 1;
 }
 
-/* Centering buttons */
 div[role="main"] {
   display: flex;
   justify-content: center;

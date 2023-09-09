@@ -2,7 +2,8 @@
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand">
-        <i class="fa-solid fa-lines-leaning"></i>DayCrafter</a
+        <i class="fa-solid fa-lines-leaning" style="margin-right: 10px"></i
+        >Habits Tracker</a
       >
       <form class="d-flex" role="search">
         <input
@@ -10,19 +11,22 @@
           type="search"
           placeholder="Search by Habit"
           aria-label="Search"
+          disabled
         />
-        <button class="btn btn-outline-info" type="submit">Search</button>
+        <button class="btn btn-outline-info" type="submit" disabled>
+          Search
+        </button>
       </form>
     </div>
   </nav>
 </template>
 <style scoped>
 .navbar.bg-body-tertiary {
-  background-color: #e3f2fd;
+  background-color: #e3f2fd !important;
   font-weight: bold;
 }
 .navbar.bg-body-tertiary a {
-  color: #0c356a; /* Explicitly setting the color for anchor tags within the navbar */
+  color: #0c356a;
 }
 .navbar-brand {
   font-family: "Borel", cursive;

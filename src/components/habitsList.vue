@@ -2,9 +2,10 @@
   <div>
     <h1>Your Habits List</h1>
     <p>
-      "Habits are the invisible architecture of daily life. We repeat about 40%
-      of our behavior almost daily, so our habits shape our existence and our
-      future. If we change our habits, we change our lives." — Gretchen Rubin
+      "Habits are the invisible architecture of daily life.<br />
+      We repeat about 40% of our behavior almost daily, so our habits shape our
+      existence and our future. If we change our habits, we change our lives." —
+      Gretchen Rubin
     </p>
     <div class="input-group">
       <input v-model="newHabit" placeholder="New habit" />
@@ -77,10 +78,9 @@ select {
   font-size: 16px;
   width: 25%;
   background-color: #fff;
-  appearance: none; /* To remove default OS styling */
+  appearance: none;
 }
 
-/* Giving the category a distinct look in the habit display */
 strong {
   background-color: #e9ecef;
   padding: 5px 10px;
@@ -96,6 +96,7 @@ button {
   color: #fff;
   cursor: pointer;
   font-size: 16px;
+  margin-right: 10px;
   transition: background-color 0.2s ease;
 }
 
@@ -103,7 +104,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Secondary buttons for Update/Delete */
 button:nth-child(2),
 button:nth-child(3) {
   background-color: #6c757d;
@@ -135,7 +135,6 @@ div[v-for="habit in habits"] > div {
   background-color: #fff;
   padding: 10px;
   border-radius: 4px;
-  margin-top: 10px;
 }
 </style>
 

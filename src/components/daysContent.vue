@@ -1,25 +1,127 @@
+<template>
+  <div class="habit-header">Master Your New Habits!</div>
+
+  <div class="container">
+    <div class="habit-container" v-for="habit in habits" :key="habit.id">
+      <input type="checkbox" v-model="selectedHabits" :value="habit.text" />
+      <label>{{ habit.text }}</label>
+    </div>
+    <div class="date-container">
+      <input type="date" :max="today" v-model="selectedDate" />
+    </div>
+    <button @click="addCompletedHabits">Completed</button>
+    <div class="habits-list">
+      <div v-for="completed in completedHabits" :key="completed.date">
+        <div>{{ completed.date }}</div>
+        <ul>
+          <li v-for="(habit, index) in completed.habits" :key="index">
+            {{ habit }}
+            <button
+              style="background-color: transparent; border: none"
+              @click="deleteHabit(completed.date, index)"
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.habit-header {
+  background-color: #f7f7f7;
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 2px solid #e0e0e0;
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+.habit-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 2px solid #ccc;
+}
+
+label {
+  white-space: nowrap;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffc60b;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #007bff;
+}
+
+.habits-list > div {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.fa-solid {
+  font-size: 16px;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+select,
+input {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.date-container {
+  margin-top: 10px;
+}
+</style>
+
 <script>
 import { ref, onMounted, computed } from "vue";
-import NavigationComponent from "./navigationComponent.vue";
-import FooterSection from "./footerSection.vue";
 
 export default {
-  name: "daysContent",
-  components: {
-    NavigationComponent,
-    FooterSection,
-  },
   setup() {
     const newHabit = ref("");
-    const selectedHabits = ref([]); // To store multiple selected habits
+    const selectedHabits = ref([]);
     const selectedDate = ref("");
-    const completedHabits = ref([]); // To store the selected habits with their dates
+    const completedHabits = ref([]);
 
-    // Declare habits ref here
     let storedHabits = localStorage.getItem("habits");
     const habits = ref(storedHabits ? JSON.parse(storedHabits) : []);
 
-    // Load habits and completedHabits from localStorage on component mount
     onMounted(() => {
       let storedCompletedHabits = localStorage.getItem("completedHabits");
       if (storedCompletedHabits) {
@@ -52,12 +154,12 @@ export default {
           (entry) => entry.date === selectedDate.value
         );
         if (existingEntry) {
-          // If the date already exists, merge habits without duplicating
+          // If the date already exists, merge habits without duplicating them
           existingEntry.habits = [
             ...new Set([...existingEntry.habits, ...selectedHabits.value]),
           ];
         } else {
-          // Else create a new entry
+          // Else create a new entry for the new habit
           completedHabits.value.push({
             date: selectedDate.value,
             habits: [...selectedHabits.value],
@@ -75,7 +177,7 @@ export default {
       if (dateEntry) {
         dateEntry.habits.splice(habitIndex, 1);
         if (dateEntry.habits.length === 0) {
-          // If no habits left for a date, remove the date entry too
+          // If no habits left for a date, remove the date too
           completedHabits.value = completedHabits.value.filter(
             (entry) => entry.date !== date
           );
@@ -84,7 +186,6 @@ export default {
       }
     }
 
-    // Compute today's date in 'YYYY-MM-DD' format
     const today = computed(() => {
       const currentDate = new Date();
       const year = currentDate.getFullYear();
@@ -94,7 +195,7 @@ export default {
       month = month < 10 ? "0" + month : month;
       day = day < 10 ? "0" + day : day;
 
-      return `${year}-${month}-${day}`;
+      return `${day}-${month}-${year}`;
     });
 
     return {

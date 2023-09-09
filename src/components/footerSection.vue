@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-content">
-      <p>&copy; 2023 DayCrafter -- All rights reserved.</p>
+      <p>&copy; 2023 Habits Tracker -- All rights reserved.</p>
       <div id="social-icons">
         <a href="https://www.facebook.com/yourpage" target="_blank">
           <i class="fa-brands fa-facebook"></i>
@@ -30,19 +30,19 @@ html {
 }
 
 .footer {
-  border: 2px yellow solid;
+  margin-top: 3rem;
   background-color: #e3f2fd;
   color: black;
   font-weight: bold;
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 1vh;
   text-align: center;
 }
 
 .footer-content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #social-icons a {
